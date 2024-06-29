@@ -113,13 +113,13 @@ export default function Navigation() {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-gray-900 text-gray-600 ${
+            className={`absolute right-5 mb-9 mr-1 space-y-2 bg-gray-900 text-gray-600 ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
             {userInfo.isAdmin && (
               <>
-                <li className="hover:bg-gray-500 px-4 py-2 rounded-md">
+                <li className="hover:bg-gray-500 px-1 py-1 rounded-md">
                   <Link
                     to="/admin/dashboard"
                     className="block px-4 py-2 hover:bg-gray-500 "
