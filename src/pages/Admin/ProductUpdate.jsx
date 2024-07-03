@@ -12,7 +12,7 @@ import AdminMenu from "./AdminMenu"
 const ProductUpdate = () => {
   const { id } = useParams();
     const { data: productData } = useGetProductByIdQuery(id);
-    console.log("Fetching product data for ID:", id); // Debugging line
+    //console.log("Fetching product data for ID:", id); // Debugging line
 
     const {data:categories=[]} = useGetCategoriesQuery()
 

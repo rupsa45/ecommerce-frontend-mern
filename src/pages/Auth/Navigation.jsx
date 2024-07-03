@@ -13,12 +13,14 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
+import FavoritesCount from "../Products/FavoritesCount";
 
 export default function Navigation() {
   const { userInfo } = useSelector((state) => state.auth);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const {cartItems} = useSelector(state=> state.cart)
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -73,8 +75,18 @@ export default function Navigation() {
           to="/cart"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
-          <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+            <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+            <div className="div absolute top-9 ">
+              {
+                cartItems.length > 0 
+                ? <span className="cart-count px-1 py-0 text-white bg-red-500 rounded-full">
+                    {cartItems.reduce((a, c )=> a + c.qty,0)}
+                  </span> 
+                : null
+
+              }
+            </div>
         </Link>
         <Link
           to="/favorite"
@@ -82,6 +94,7 @@ export default function Navigation() {
         >
           <FaHeart className="mt-[3rem] mr-2" size={20} />
           <span className="hidden nav-item-name mt-[3rem]">FAVORITE</span>{" "}
+          <FavoritesCount/>
         </Link>
       </div>
 

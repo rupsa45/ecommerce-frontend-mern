@@ -15,6 +15,13 @@ import CategoryList from "./pages/Admin/CategoryList.jsx";
 import ProductList from "./pages/Admin/ProductList.jsx";
 import ProductUpdate from "./pages/Admin/ProductUpdate.jsx";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
+import Home from "./Home.jsx";
+import Favorites from "./pages/Products/Favorites.jsx";
+import ProductDetails from "./pages/Products/ProductDetails.jsx";
+import Cart from "./components/Cart.jsx";
+import Shop from "./pages/Shop.jsx";
+
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -23,6 +30,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/" element={<App />}>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route index={true} path="/" element={<Home />} />
+            <Route path="/favorite" element={<Favorites/>}/>
+            <Route path="/product/:id" element={<ProductDetails/>}/>
+            <Route path="/cart" element={<Cart/>}/>
+            <Route path="/shop" element={<Shop/>}/>
 
             <Route path="" element={<ProtectedAuthRoute />}>
               <Route path="/profile" element={<Profile />} />

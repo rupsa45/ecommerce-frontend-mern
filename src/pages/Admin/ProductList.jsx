@@ -51,7 +51,7 @@ const ProductList = () => {
             {image && (
               <div className="text-center">
                 <img
-                   src={URL.createObjectURL(image)}
+                  src={URL.createObjectURL(image)}
                   alt="product"
                   className="block mx-auto max-h-[200px]"
                 />
