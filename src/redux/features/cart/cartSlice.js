@@ -45,7 +45,7 @@ export const {
     addToCart,
     removeFromCart,
     saveShippingAddress,
-    savePaymentMethod,  // Corrected the export
+    savePaymentMethod, 
     clearCart,
     resetCart,
 } = cartSlice.actions;
