@@ -7,11 +7,10 @@ import { addToCart } from "../../redux/features/cart/cartSlice";
 
 const ProductsCard = ({p}) => {
   const dispatch = useDispatch();
-  const addToCartHandler=()=>{
-    dispatch(addToCart(p));
-    toast.success("Item added successfully")
-  }
-
+  const addToCartHandler = (product, qty) => {
+    dispatch(addToCart({ ...product, qty }));
+    toast.success("Item added successfully");
+  };
   return (
     <div className="max-w-sm relative bg-[#1A1A1A] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700">
       <section className="relative">

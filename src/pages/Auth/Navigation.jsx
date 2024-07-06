@@ -20,7 +20,7 @@ export default function Navigation() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const {cartItems} = useSelector(state=> state.cart)
+  const { cartItems } = useSelector((state) => state.cart);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -75,18 +75,15 @@ export default function Navigation() {
           to="/cart"
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
-            <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
-            <div className="div absolute top-9 ">
-              {
-                cartItems.length > 0 
-                ? <span className="cart-count px-1 py-0 text-white bg-red-500 rounded-full">
-                    {cartItems.reduce((a, c )=> a + c.qty,0)}
-                  </span> 
-                : null
-
-              }
-            </div>
+          <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
+          <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+          <div className="div absolute top-9 ">
+            {cartItems.length > 0 && (
+              <span className="cart-count px-1 py-0 text-white bg-red-500 rounded-full">
+                {cartItems.reduce((total, item) => total + item.qty, 0)}
+              </span>
+            )}
+          </div>
         </Link>
         <Link
           to="/favorite"
@@ -94,7 +91,7 @@ export default function Navigation() {
         >
           <FaHeart className="mt-[3rem] mr-2" size={20} />
           <span className="hidden nav-item-name mt-[3rem]">FAVORITE</span>{" "}
-          <FavoritesCount/>
+          <FavoritesCount />
         </Link>
       </div>
 
@@ -174,8 +171,11 @@ export default function Navigation() {
                 </li>
               </>
             )}
-              <li>
-              <Link to="/profile" className=" block px-4 py-2 hover:bg-gray-700">
+            <li>
+              <Link
+                to="/profile"
+                className=" block px-4 py-2 hover:bg-gray-700"
+              >
                 Profile
               </Link>
             </li>
@@ -189,7 +189,6 @@ export default function Navigation() {
             </li>
           </ul>
         )}
-        
       </div>
       {!userInfo && (
         <ul>
